@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+   .container{
+       position: relative;
+       width:500px;
+       height:600px;
+       border: 2px solid black;
+       margin: 0 auto;
+       
+   }
+   #display{
+     
+       height:500px;
+       overflow: auto;
+
+   }
+   #message{
+       position:absolute;
+       bottom:0;
+       background-color: #2dc41e;
+       height:100px;
+       width:500px;
+
+   }
+   table{
+       margin:0 auto;
+       margin-top: 20px;
+   }
+   input{
+       height:35px;
+       display: block;
+       border: none;
+       outline: rgb(240, 240, 240);
+       width:300px;
+   }
+   button{
+       height:35px;
+       cursor:pointer;
+       background-color: #087bf7;
+       color: whitesmoke;
+       border:#087bf7 1px solid;
+
+   }
+   button:hover{
+       background-color: #026ddf;
+   }
+   .messageStyle{
+       width:250px;
+       height:auto;
+       background-color: #087bf7;
+       font-family:Verdana, Geneva, Tahoma, sans-serif;
+       color:whitesmoke;
+       border-radius: 25%;
+       display:block;
+       padding: 20px;
+       margin: 7px;
+       float:right;
+       word-wrap: break-word;
+   }
+   .darkmode{
+       background-color: rgb(27, 27, 27);
+   }
+  #img{
+      height:35px;
+      width:40px;
+      cursor: pointer;
+      border-radius: 50%;
+      border: whitesmoke 1ps solid;
+      background-color: #087bf7;
+  }
+  #img:hover{
+      filter: opacity(70%);
+  }
+  .darkinput{
+    background-Color:rgb(19, 19, 19);
+    color:rgb(192, 192, 192);
+    border:none;
+    outline:rgb(240, 240, 240) ;
+  }
+  .darkdisplay{
+    border:1px solid rgb(240,240,240);
+    background-Color:rgb(3, 3, 3);
+
+  }
+  .darkmessage{
+    
+    background-Color:rgb(3, 3, 3);
+  }
+  td{
+      
+      height:50px;
+  }
+   @media only screen and (max-width:678px) {
+       .container{
+           width:500px;
+           height:600px;
+           
+       }
+       
+   }
+</style>
+<script>
+   
+    
+    function Send(){ 
+            const r = Math.floor(Math.random() * 2) + 1;
+            console.log(r);
+            var message=document.getElementById("inputfield");
+            var display=document.getElementById("display");
+        if(r==1){  
+            if(message.value!=""){
+            var paragraph=document.createElement("p");
+            paragraph.innerText=message.value;
+            paragraph.classList.add("messageStyle");
+            display.appendChild(paragraph);
+            message.value="";
+            }else{
+            alert("You can't send an empty message");
+            }
+        }
+        
+        if(r!=1){
+            if(message.value!=""){
+            var paragraph=document.createElement("p");
+            paragraph.innerText=message.value;
+            paragraph.classList.add("messageStyle");
+            paragraph.style.float="left";
+            paragraph.style.backgroundColor="#2dc41e";
+            display.appendChild(paragraph);
+            message.value="";
+
+            }else{
+            alert("You can't send an empty message");
+            }
+        }
+    }
+    function Dark(){
+        var body=document.body;
+        body.classList.toggle("darkmode");
+        var inputfield=document.getElementById("inputfield");
+        inputfield.classList.toggle("darkinput");
+        var blackdisplay=document.getElementById("display");
+        blackdisplay.classList.toggle("darkdisplay");
+        var blackmessage=document.getElementById("message");
+        blackmessage.classList.toggle("darkmessage");
+        
+    }
+</script>
+<body>
+    <div class="container">
+        <div id="display">
+
+        </div>
+        <div id="message">
+            <table>
+                <tr>
+                    <td>
+                        <input type="text" id="inputfield" placeholder="Insert a message..." >
+                    </td>
+                    <td>
+                        <button id="button" onclick="Send();"> Send</button>
+                    </td>
+                    <td>
+                        <img src="images/darkmode.png" alt="" id="img" onclick="Dark();" title="Dark Mode">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+   
+    
+</body>
+</html>
