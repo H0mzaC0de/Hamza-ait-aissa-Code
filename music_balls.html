@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Balls</title>
+</head>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .app{
+        display:flex;
+        flex-direction: column;
+        height:100vh;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .header{
+        font-family: Montserrat;
+        font-size: 50px;
+        font-weight: normal;
+
+    }
+    .underHeader{
+        font-family: Montserrat;
+        font-size: small;
+        text-align: center;
+
+    }
+    .balls{
+         display:flex;
+
+        width:100%;
+        
+
+    }
+
+   .balls > div{
+      flex:1;
+       width:150px;
+       height:150px;
+       border-radius: 50%;
+       cursor: pointer;
+   }
+   .ball1{
+       background-color:rgb(106, 255, 168);
+       position:relative;
+       bottom:30px;
+   }
+   .ball2{
+       background-color:rgb(132, 220, 255);
+       position:relative;
+       bottom:60px;
+   }
+   .ball3{
+       background-color:rgb(231, 255, 164);
+       position:relative;
+       bottom:30px;
+   }
+   .ball4{
+       background-color:rgb(255, 169, 119);
+       position:relative;
+       bottom:60px;
+   }
+   .ball5{
+       background-color:rgb(255, 188, 227);
+       position:relative;
+       bottom:30px;
+   }
+   .ball6{
+       background-color:rgb(255, 72, 72);
+       position:relative;
+       bottom:60px;
+   }
+</style>
+<script>
+    window.addEventListener("load",function(){
+        const sound=document.querySelectorAll(".sounds");
+        const balls=document.querySelectorAll(".balls div");
+
+        balls.forEach((ball,index)=>{
+            ball.addEventListener("click",function(){
+                sound[index].currentTime=0;
+                sound[index].play(); 
+                console.log(sound[index])
+            })
+        })
+
+    })
+
+</script>
+<body>
+    <div class="app">
+        <header>
+            <h1 class="header">Music Balls</h1>
+        <h3 class="underHeader">Tap to make music</h3>
+
+        </header>
+        <div class="animation"></div>
+        <div class="balls">
+            <div class="ball1">
+                <audio class="sounds" src="sound/sounds_bubbles.mp3"></audio>
+            </div>
+            <div class="ball2">
+                <audio class="sounds" src="sound/sounds_clay.mp3"></audio>
+            </div>
+            <div class="ball3">
+                <audio class="sounds" src="sound/sounds_confetti.mp3"></audio>
+            </div>
+            <div class="ball4">
+                <audio class="sounds" src="sound/sounds_glimmer.mp3"></audio>
+            </div>
+            <div class="ball5">
+                <audio class="sounds" src="sound/sounds_moon.mp3"></audio>
+            </div>
+            <div class="ball6">
+                <audio class="sounds" src="sound/sounds_ufo.mp3"></audio>
+            </div>
+        </div>
+
+        </div>
+
+    </div>
+</body>
+</html>
