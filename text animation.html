@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head><link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+    .container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height:100vh;
+        justify-content: space-around;
+
+    }
+    body{
+        background-color: black;
+
+    }
+    #animated{
+        color:whitesmoke;
+        font-family: Montserrat;
+        font-size: 60px;
+    }
+    span{
+        opacity: 0;
+        transition: 0.5s ease ;
+        /*display: inline-block;*/
+    }
+    .fade{
+        opacity: 1;
+       /* transform: translateY(-50px);*/
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h1 id="animated">Look At Me haha</h1>
+    </div>
+</body>
+<script>
+    const text=document.querySelector("#animated");
+    const Intext=text.textContent;
+    console.log(Intext);
+    const SplitText=Intext.split("");
+    console.log(SplitText);
+    text.textContent="";
+    for(var i=0;i<SplitText.length;i++){
+        text.innerHTML+="<span>"+SplitText[i]+"</span>"
+
+    }
+    var char=0;
+    var timer=setInterval(onAnimation,200);
+
+    function onAnimation(){
+        //lets get those spans genrated in the loop :)
+        var spans=document.querySelectorAll("span")[char];
+        spans.classList.add("fade");
+        char++;
+        if(char===SplitText.length){
+            IntOff();
+        }
+    }
+
+    function IntOff(){
+        clearInterval(timer);
+    }
+</script>
+</html>
