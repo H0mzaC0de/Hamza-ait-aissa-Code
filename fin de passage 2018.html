@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informations Client</title>
+</head>
+<style>
+    .table{
+        width:80%;
+    }
+    .input{
+        width:70%;
+    }
+    .star{
+        color: red;
+    }
+    .labels{
+        color:green;
+        font-size: 15px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-style: italic ;
+    }
+    .field{
+        background-color: yellow;
+    }
+    #confirmation{
+        height: auto;
+        width:100%;
+        background-color: yellowgreen;
+        border: springgreen 1px dotted;
+        margin-top: 10px;
+        font-family: monospace;
+        font-size: 20px;
+        font-weight: normal;
+    }
+  
+    
+</style>
+
+<script>
+    function check(){
+        var nom=document.getElementById("nom");
+        var prenom=document.getElementById("prenom");
+        var ville=document.getElementById("ville");
+        var tel=document.getElementById("tel");
+        var addresse=document.getElementById("addresse");
+        var email=document.getElementById("email");
+        var password=document.getElementById("password");
+        var passwordC=document.getElementById("password2");
+        var ddn=document.getElementById("ddn");
+        var natio=document.getElementsByName("natio");
+        var natio_value;
+        var hobby=document.getElementsByName("hobbies");
+        var hobby_value;
+
+        if(nom.value==""){
+            document.getElementById("errorNom").innerHTML="*ce champ est obligatoire";
+            document.getElementById("errorNom").style="background-color:white;font-family:arial;color:red;font-weight:bold;";
+        }
+        if(prenom.value==""){
+            document.getElementById("errorPrenom").innerHTML="*ce champ est obligatoire";
+            document.getElementById("errorPrenom").style="background-color:white;font-family:arial;color:red;font-weight:bold;";
+        }
+        if(ville.value==""){
+            document.getElementById("errorVille").innerHTML="*ce champ est obligatoire";
+            document.getElementById("errorVille").style="background-color:white;font-family:arial;color:red;font-weight:bold;";
+        }
+        if(tel.value==""){
+            document.getElementById("errorTel").innerHTML="*ce champ est obligatoire";
+            document.getElementById("errorTel").style="background-color:white;font-family:arial;color:red;font-weight:bold;";
+        }
+        if(addresse.value==""){
+            document.getElementById("errorAddresse").innerHTML="*ce champ est obligatoire";
+            document.getElementById("errorAddresse").style="background-color:white;font-family:arial;color:red;font-weight:bold;";
+        }
+        if(password.value==""){
+            document.getElementById("errorPassword").innerHTML="*ce champ est obligatoire";
+            document.getElementById("errorPassword").style="background-color:white;font-family:arial;color:red;font-weight:bold;";
+        }
+         if(password.value!=passwordC.value){
+            document.getElementById("errorPassword2").innerHTML="*les Mot de passe ne sont pas identique ";
+            document.getElementById("errorPassword2").style="background-color:white;font-family:arial;color:red;font-weight:bold;";
+
+        }
+        if(ddn.value==""){
+            document.getElementById("errorDat").innerHTML="*ce champ est obligatoire";
+            document.getElementById("errorDat").style="background-color:white;font-family:arial;color:red;font-weight:bold;";
+
+        }else{
+           var ddn2=new Date(2004,01,01);
+           var ddn3 =new Date(ddn.value);
+            if(ddn3>ddn2){
+                console.log(ddn.value);
+                document.getElementById("errorDat").innerHTML="*Moins de 18 ans est INACEPTABLE";
+                document.getElementById("errorDat").style="font-family:arial;color:red;font-weight:bold;";
+            }else{
+                document.getElementById("errorDat").innerHTML="*Age ACCEPTÉ!";
+                document.getElementById("errorDat").style="font-family:arial;color:green;font-weight:bold;";
+            }
+        }
+        for(var i=0;i<natio.length;i++){
+            if(natio[i].checked){
+                
+                natio_value=natio[i].value;
+               
+            }
+         }
+            if(natio_value==null){
+                document.getElementById("errorNat").innerHTML="*ce champ est obligatoire";
+                document.getElementById("errorNat").style="background-color:white;font-family:arial;color:red;font-weight:bold;";
+            }
+       
+        for(var i=0;i<hobby.length;i++){
+            if(hobby[i].checked){
+                
+                hobby_value=hobby[i].value;
+ 
+            }
+        } 
+            if(hobby_value==null){
+                document.getElementById("errorHob").innerHTML="*ce champ est obligatoire";
+                document.getElementById("errorHob").style="background-color:white;font-family:arial;color:red;font-weight:bold;";
+            }
+        
+        pattern();
+        
+        if(nom.value!=""&&prenom.value!=""&&ville.value!=""&&tel.value!=""&&addresse.value!=""&&password.value!=""&&passwordC.value!=""&&ddn.value!=""&&natio_value!=null&&hobby_value!=null){
+        alert("Cliquez sur OK pour voir votre fiche d'inscription");
+        document.getElementById("confirmation").innerHTML="<center><h1>Fiche d'Inscription</h1></center>";
+        document.getElementById("confirmation").innerHTML+="Nom : "+nom.value+"<br/>";
+        document.getElementById("confirmation").innerHTML+="Prenom : "+prenom.value+"<br/>";
+        document.getElementById("confirmation").innerHTML+="Ville : "+ville.value+"<br/>";
+        document.getElementById("confirmation").innerHTML+="Telephone : "+tel.value+"<br/>";
+        document.getElementById("confirmation").innerHTML+="Addresse : "+addresse.value+"<br/>";
+        document.getElementById("confirmation").innerHTML+="Password : "+password.value+"<br/>";
+        document.getElementById("confirmation").innerHTML+="Date de naissance : "+ddn.value+"<br/>";
+        document.getElementById("confirmation").innerHTML+="Nationalite : "+natio_value+"<br/>";
+        document.getElementById("confirmation").innerHTML+="Hobbies : "+hobby_value+"<br/>";
+        }
+    }
+    function pattern(){
+        var nom=document.getElementById("nom");
+        var prenom=document.getElementById("prenom");
+        var ville=document.getElementById("ville");
+        var tel=document.getElementById("tel");
+        var addresse=document.getElementById("addresse");
+        var email=document.getElementById("email");
+        var password=document.getElementById("password");
+        var passwordC=document.getElementById("password2");
+        var ddn=document.getElementById("ddn");
+        
+
+        if(nom.value!=""){
+            var patternom=/^[A-Z]{1}[A-Za-z]+/; 
+        if(!patternom.test(nom.value)){
+            document.getElementById("errorNom").innerHTML="*Respecter la forme!!!";
+             document.getElementById("errorNom").style="background-color:red;font-family:arial;";
+     
+
+         }
+      }
+         if(prenom.value!=""){
+        var patterprenom=/^[(A-Z)|(a-z)]+/;
+        if(!patterprenom.test(prenom.value)){
+         document.getElementById("errorPrenom").innerHTML="*Respecter la forme!!!";
+         document.getElementById("errorPrenom").style="background-color:red;font-family:arial;";
+     
+
+        }
+        }
+        if(tel.value!=""){
+            var pattertel=/^[(06)||(05)]{1}[0-9]{8}/;
+            if(!pattertel.test(tel.value)){
+                document.getElementById("errorTel").innerHTML="*Respecter la forme!!!";
+                document.getElementById("errorTel").style="background-color:red;font-family:arial;";
+
+            }
+        }
+        if(email.value!=""){
+            var patterEmail=/^[A-Za-z]+[A-Za-z0-9_.]+@[A-Za-z]+[A-Za-z0-9_.]+.[A-Za-z]{2,5}/;
+            if(!patterEmail.test(email.value)){
+                 document.getElementById("errorEmail").innerHTML="*Respecter la forme!!!";
+                    document.getElementById("errorEmail").style="background-color:red;font-family:arial";
+ 
+             }
+        }
+        
+        
+        
+
+    }
+    function annuler(){
+        var nom=document.getElementById("nom").value=null;
+        var prenom=document.getElementById("prenom").value=null;
+        var ville=document.getElementById("ville").value=null;
+        var tel=document.getElementById("tel").value=null;
+        var addresse=document.getElementById("addresse").value=null;
+        var email=document.getElementById("email").value=null;
+        var password=document.getElementById("password").value=null;
+        var passwordC=document.getElementById("password2").value=null;
+        var ddn=document.getElementById("ddn").value=null;
+        document.getElementById("errorNom").value=null;
+        document.getElementById("errorPrenom")=null;
+       document.getElementById("errorTel")=null;
+        document.getElementById("errorAddresse")=null;
+       document.getElementById("errorEmail")=null;
+       document.getElementById("errorPassword")=null;
+        document.getElementById("errorPassword2")=null;
+        document.getElementById("errorDat")=null;
+       
+
+    }
+
+
+        
+
+        
+    
+</script>
+<body>
+    <fieldset class="field">
+        <legend style="font-family: Arial, Helvetica, sans-serif;font-style: italic;font-weight: bold;">Informations Client</legend>
+        <table class="table">
+            <tr>
+                <td><span class="star">*</span><span class="labels">Nom Client</span></td>
+                <td><input type="text" id="nom" class="input"/></td>
+                <td><span id="errorNom"></span></td>
+            </tr>
+            <tr>
+                <td><span class="star">*</span><span class="labels">Prenom Client</span></td>
+                <td><input type="text" id="prenom" class="input"/></td>
+                <td><span id="errorPrenom"></span></td>
+            </tr>
+            <tr>
+                <td><span class="star">*</span><span class="labels">Ville</span></td>
+                <td><select id="ville"  class="input">
+                    <optgroup label="Maroc">
+                    <option value="fes">Fes</option>
+                    <option value="rabat">Rabat</option>
+                    <option value="casa">Casa</option>
+                    <option value="Mekness">Mekness</option>
+                    <option value="Marrakech">Marrakech</option></optgroup>
+                    <optgroup label="France">
+                        <option value="paris">Paris</option>
+                        <option value="nice">Nice</option>
+                        <option value="lyon">Lyon</option>
+                        </optgroup>
+                </select></td>
+                <td><span id="errorVille"></span></td>
+            </tr>
+            <tr>
+                <td><span class="star">*</span><span class="labels">Tel</span></td>
+                <td><input type="number" id="tel" class="input"/></td>
+                <td><span id="errorTel"></span></td>
+            </tr>
+            <tr>
+                <td><span class="star">*</span><span class="labels">Addresse</span></td>
+                <td><input type="text" id="addresse" class="input"/></td>
+                <td><span id="errorAddresse"></span></td>
+            </tr>
+            <tr>
+                <td><span class="star">*</span><span class="labels">Email</span></td>
+                <td><input type="email" id="email" class="input"/></td>
+                <td><span id="errorEmail"></span></td>
+            </tr>
+            <tr>
+                <td><span class="star">*</span><span class="labels">Mot de passe</span></td>
+                <td><input type="password" id="password" class="input"/></td>
+                <td><span id="errorPassword"></span></td>
+                
+            </tr>
+            <tr>
+                <td><span class="star">*</span><span class="labels">Confirmer Mot de Passe</span></td>
+                <td><input type="password" id="password2" class="input"/></td>
+                <td><span id="errorPassword2"></span></td>
+            </tr>
+            <tr>
+                <td><span class="star">*</span><span class="labels">Nationalite</span></td>
+                <td><input type="radio" name="natio" class="input"value="Marrocain"/>Marroccain<br/>
+                    <input type="radio" name="natio"class="input" value="Etranger"/>Etranger</td>
+                    <td><span id="errorNat"></span></td>
+            </tr>
+            <tr>
+                <td><span class="star">*</span><span class="labels">Date de naissance</span> </td>
+                <td><input type="date" id="ddn" class="input"/></td>
+                <td><span id="errorDat"></span></td>
+            </tr>
+            <tr>
+                <td><span class="star">*</span><span class="labels">Hobbies</span></td>
+                <td>
+                    <input type="radio"  name="hobbies"class="input" value="lecture"/>Lecture<br/>
+                    <input type="radio"  name="hobbies"class="input" value="voyage"/>Voyage<br/>
+                    <input type="radio"  name="hobbies"class="input" value="theatre"/>Theatre<br/>
+                    <input type="radio"  name="hobbies"class="input" value="cinema"/>Cinema<br/></td>
+                    <td><span id="errorHob"></span></td>
+            </tr>
+            <tr>
+                <td><button id="creer" onclick="check();" style="cursor: pointer;">Creer Un Compte</button></td>
+                <td><button id="annuler" onclick="annuler();" style="cursor: pointer;">Annuler</button></td>
+                
+                
+            </tr>
+            
+        </table>
+    </fieldset>
+    <div id="confirmation" >
+
+    </div>
+    
+</body>
+</html>
